@@ -3,7 +3,7 @@ from tools import *
 
 
 async def main_run():
-    bot = Bot(token=config['Telegram']['API'], parse_mode=ParseMode.HTML)
+    bot = Bot(token=config['Telegram']['api'], parse_mode=ParseMode.HTML)
     dp = Dispatcher(storage=MemoryStorage())
     dp.include_router(router)
     await bot.delete_webhook(drop_pending_updates=True)
@@ -11,5 +11,5 @@ async def main_run():
 
 
 if __name__ == '__main__':
-    # print(config['Telegram']['API'])
+    print(config['Telegram']['api'])
     asyncio.run(main_run())
