@@ -1,10 +1,20 @@
 from settings import *
+from tools.bilding_class import AlertGenerator
+
+
+agen = AlertGenerator(4, 6)
 
 router = Router()
 
+
 @router.message(Command("start"))
 async def start_handler(msg: Message):
-    await msg.answer("Привет! Я помогу тебе узнать твой ID, просто отправь мне любое сообщение")
+    await msg.answer(f"Привет {agen.volume_cn}! Я помогу тебе узнать твой ID, просто отправь мне любое сообщение")
+
+
+@router.message(Command("sa"))
+async def start_handler(msg: Message):
+    await msg.answer(f"Привет {agen.volume_cn}! Я помогу тебе узнать твой ID, просто отправь мне любое сообщение")
 
 
 @router.message()
