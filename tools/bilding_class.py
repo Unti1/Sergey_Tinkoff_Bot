@@ -16,7 +16,7 @@ class ActualInstruments:
         Метод получения актуального расписаний, секций и аккций Мосбиржи
         :return: сообщение с расписанием
         """
-        self.__all_params = await async_get_schedules()  # Синхронный запрос в Тинкофф АПИ
+        self.__all_params = await async_get_schedules()  # Асинхронный запрос в Тинкофф АПИ
         self.exchanges = self.__all_params[0]  # Множество секций торговли акциями на Мосбирже
         self.shares = self.__all_params[1]  # Список акций, торгуемых на Мосбирже (тип данных Share)
         self.shedulers = self.__all_params[2]  # Словарь секций акций Мосбиржи с расписаниями торгов на несколько дней
@@ -26,9 +26,9 @@ class ActualInstruments:
         for __exchange in self.shedulers.keys():
             if self.shedulers[__exchange][0].is_trading_day:  # Если текущая дата - дата торгов на Мосбирже
                 self.is_trading = True
-                self.message_shedulers += (f'{__exchange}:'
+                self.message_shedulers += (f' |  {__exchange}:'
                                            f' c {utc3(self.shedulers[__exchange][0].start_time).strftime("%H-%M")}'
-                                           f' до {utc3(self.shedulers[__exchange][0].end_time).strftime("%H-%M")}')
+                                           f' до {utc3(self.shedulers[__exchange][0].end_time).strftime("%H-%M")} ')
         if not self.is_trading:
             for day in range(len(self.shedulers[__exchange])-1, 0, -1):
                 self.message_shedulers = f'Расписание на {self.shedulers[__exchange][day].date.strftime("%y-%m-%d")}: '
