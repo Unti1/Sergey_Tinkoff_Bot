@@ -3,3 +3,8 @@ data/
 .idea/
 */__pycache__/
 .ipynb_checkpoints/
+bin
+lib
+lib64
+include
+pyvenv.cfg
