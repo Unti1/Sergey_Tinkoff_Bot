@@ -24,7 +24,7 @@ async def monitoring_exchange(actual_shares):
     """
     while True:
         # Проверяем время для запуска по расписанию актуализации расписания и параметров акций Мосбиржи
-        if utc3(now()).strftime('%H') == '18':
+        if utc3(now()).strftime('%H') == '10':
             await actual_shares.fit()
             print(actual_shares.message_shedulers)
             #actual_shares.prn_exchanges()
