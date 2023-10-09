@@ -36,9 +36,9 @@ async def monitoring_exchange(actual_shares):
 
             await asyncio.sleep(60)
         
-        # Обработчик изменения данных
+        
         event_data = {} # какие то данные взятые из БД по пользователям
-        if True:
+        if True: # Обработчик изменения данных
             if actual_shares.bot != None:
                 actual_shares.bot.send_message(event_data['chat_id'], actual_shares.message_shedulers)
             else:
@@ -62,7 +62,9 @@ async def main(actual_shares):
 
 # Запускаем бота и опрос рынка
 if __name__ == '__main__':
-
+    # global loop
+    # loop = asyncio.get_event_loop()
+    # loop.create_task(...)# Создаешь новый таск
     # Создаём журнал логирования  ###---  ВОПРОС: как направлять в разные файлы потоки из разных модудей? ---###
     logger.add(LOG_SCHEDULE_PATH, rotation="1 MB", enqueue=True)
 

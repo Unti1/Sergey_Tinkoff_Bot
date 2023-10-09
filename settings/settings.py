@@ -48,7 +48,6 @@ LOG_SCHEDULE_PATH = 'data/logfile/schedule.log'
 config = configparser.ConfigParser()
 config.read('settings/settings.ini')
 
-
 def config_update():
     with open('settings/settings.ini', 'w', encoding='utf-8') as file:
         config.write(file)
